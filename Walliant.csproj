@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <!--Project was exported from assembly: C:\Users\nebulanw\Downloads\walliant\{app}\Walliant.exe-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3F8443C8-AB1F-4D15-88AC-A98F41450885}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>Walliant</AssemblyName>
+    <ApplicationVersion>1.0.16.0</ApplicationVersion>
+    <RootNamespace>Gh.Walliant</RootNamespace>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Wallpaper\IChanger.cs" />
+    <Compile Include="Wallpaper\IService.cs" />
+    <Compile Include="Wallpaper\IFactory.cs" />
+    <Compile Include="Wallpaper\MetaData.cs" />
+    <Compile Include="Wallpaper\ImageData.cs" />
+    <Compile Include="Wallpaper\Style.cs" />
+    <Compile Include="Wallpaper\Provider.cs" />
+    <Compile Include="Wallpaper\Impl\Services\Base.cs" />
+    <Compile Include="Wallpaper\Impl\Services\Factory.cs" />
+    <Compile Include="Wallpaper\Impl\Services\Bing\ImageInfo.cs" />
+    <Compile Include="Wallpaper\Impl\Services\Bing\ResponseInfo.cs" />
+    <Compile Include="Wallpaper\Impl\Services\Bing\Service.cs" />
+    <Compile Include="Wallpaper\Impl\Services\Spotlight\AdInfo.cs" />
+    <Compile Include="Wallpaper\Impl\Services\Spotlight\BatchRspInfo.cs" />
+    <Compile Include="Wallpaper\Impl\Services\Spotlight\EntryInfo.cs" />
+    <Compile Include="Wallpaper\Impl\Services\Spotlight\ImageInfo.cs" />
+    <Compile Include="Wallpaper\Impl\Services\Spotlight\ItemInfo.cs" />
+    <Compile Include="Wallpaper\Impl\Services\Spotlight\ResponseInfo.cs" />
+    <Compile Include="Wallpaper\Impl\Services\Spotlight\Service.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Modern\DesktopSlideshowDirection.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Modern\DesktopSlideshowOptions.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Modern\DesktopSlideshowState.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Modern\DesktopWallpaper.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Modern\DesktopWallpaperPosition.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Modern\IDesktopWallpaper.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Modern\Changer.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Modern\Rect.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Legacy\ActiveDesktop.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Legacy\ApplyFlag.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Legacy\Component.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Legacy\ComponentOptions.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Legacy\ComponentPosition.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Legacy\ComponentStateInfo.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Legacy\GetWallpaperFlag.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Legacy\IActiveDesktop.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Legacy\WallpaperOptions.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Legacy\WallpaperStyle.cs" />
+    <Compile Include="Wallpaper\Impl\Changers\Legacy\Changer.cs" />
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\Config.cs" />
+    <Compile Include="Utilities\Host.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\MainForm.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gh.Common\Gh.Common.csproj">
+      <Project>{0c45c268-3bc2-4614-9238-0f32ea8b90d6}</Project>
+      <Name>Gh.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

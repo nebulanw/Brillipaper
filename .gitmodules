@@ -1,0 +1,3 @@
+[submodule "Gh.Common"]
+	path = Gh.Common
+	url = https://git.nebulanw.dev/nebulanw/Gh.Common
