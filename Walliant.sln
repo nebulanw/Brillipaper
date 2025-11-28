@@ -4,7 +4,7 @@ VisualStudioVersion = 18.0.11222.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Walliant", "Walliant.csproj", "{3F8443C8-AB1F-4D15-88AC-A98F41450885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gh.Common", "..\Gh.Common\Gh.Common.csproj", "{0C45C268-3BC2-4614-9238-0F32EA8B90D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gh.Common", "Gh.Common\Gh.Common.csproj", "{0C45C268-3BC2-4614-9238-0F32EA8B90D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
