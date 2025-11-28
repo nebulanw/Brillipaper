@@ -22,7 +22,7 @@ namespace Gh.Walliant.Utilities
     }
 
     [UserScopedSetting]
-    [DefaultSettingValue("False")]
+    [DefaultSettingValue("True")]
     public bool Active
     {
       get => (bool) this[nameof (Active)];
