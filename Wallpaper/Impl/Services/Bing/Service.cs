@@ -17,33 +17,12 @@ namespace Gh.Walliant.Wallpaper.Impl.Services.Bing
 
     private string Query(WebClient client)
     {
-      client.BaseAddress = this.baseAddress;
-      client.QueryString = new NameValueCollection()
-      {
-        {
-          "format",
-          "js"
-        },
-        {
-          "idx",
-          "0"
-        },
-        {
-          "mkt",
-          "en-US"
-        },
-        {
-          "n",
-          "1"
-        }
-      };
-      Uri address = new Uri("/HPImageArchive.aspx", UriKind.Relative);
-      return client.DownloadString(address);
+      return client.DownloadString("https://bing.com/hpimagearchive.aspx?format=js&mkt=en-US&n=1");
     }
 
     private MetaData Parse(string response)
     {
-      Uri uri = new Uri(new Uri(this.baseAddress), Serializer.Deserialize<ResponseInfo>(response).images[0].url);
+      Uri uri = new Uri(new Uri(this.baseAddress), Serializer.Deserialize<ResponseInfo>(response).images[0].urlbase + "_UHD.jpg");
       return new MetaData() { Uri = uri };
     }
   }
