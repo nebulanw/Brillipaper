@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Walliant launcher")]
-[assembly: AssemblyDescription("Application launcher file")]
+[assembly: AssemblyTitle("Walliant")]
+[assembly: AssemblyDescription("A simple wallpaper app.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Globalhop")]
+[assembly: AssemblyCompany("nebulanw")]
 [assembly: AssemblyProduct("Walliant")]
-[assembly: AssemblyCopyright("© Globalhop")]
+[assembly: AssemblyCopyright("(c) 2025 nebulanw")]
 [assembly: AssemblyTrademark("")]
 [assembly: ComVisible(false)]
 [assembly: Guid("d43b1cf6-4f22-45a2-8764-5ef694fddb05")]
