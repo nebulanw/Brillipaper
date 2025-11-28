@@ -774,7 +774,6 @@ namespace Gh.Walliant.Forms
       this.providerSettingsMenuItem.Name = "providerSettingsMenuItem";
       this.providerSettingsMenuItem.Size = new Size(179, 22);
       this.providerSettingsMenuItem.Text = "Image source";
-      this.providerMenuStrip.Enabled = false;
       this.providerMenuStrip.Items.AddRange(new ToolStripItem[2]
       {
         (ToolStripItem) this.bingProviderMenuItem,
@@ -787,12 +786,10 @@ namespace Gh.Walliant.Forms
       this.providerMenuStrip.Size = new Size(123, 48 /*0x30*/);
       this.providerMenuStrip.Closing += new ToolStripDropDownClosingEventHandler(this.HandleProviderMenuClosing);
       this.providerMenuStrip.Opening += new CancelEventHandler(this.HandleProviderMenuOpening);
-      this.bingProviderMenuItem.Enabled = false;
       this.bingProviderMenuItem.Name = "bingProviderMenuItem";
       this.bingProviderMenuItem.Size = new Size(122, 22);
       this.bingProviderMenuItem.Text = "Bing";
       this.bingProviderMenuItem.Click += new EventHandler(this.HandleBingProviderMenuItemClick);
-      this.spotlightProviderMenuItem.Enabled = false;
       this.spotlightProviderMenuItem.Name = "spotlightProviderMenuItem";
       this.spotlightProviderMenuItem.Size = new Size(122, 22);
       this.spotlightProviderMenuItem.Text = "Spotlight";
@@ -802,7 +799,6 @@ namespace Gh.Walliant.Forms
       this.styleSettingsMenuItem.Name = "styleSettingsMenuItem";
       this.styleSettingsMenuItem.Size = new Size(179, 22);
       this.styleSettingsMenuItem.Text = "Image style";
-      this.styleMenuStrip.Enabled = false;
       this.styleMenuStrip.Items.AddRange(new ToolStripItem[6]
       {
         (ToolStripItem) this.centerStyleMenuItem,
@@ -817,32 +813,26 @@ namespace Gh.Walliant.Forms
       this.styleMenuStrip.Size = new Size(112 /*0x70*/, 136);
       this.styleMenuStrip.Closing += new ToolStripDropDownClosingEventHandler(this.HandleStyleMenuClosing);
       this.styleMenuStrip.Opening += new CancelEventHandler(this.HandleStyleMenuOpening);
-      this.centerStyleMenuItem.Enabled = false;
       this.centerStyleMenuItem.Name = "centerStyleMenuItem";
       this.centerStyleMenuItem.Size = new Size(111, 22);
       this.centerStyleMenuItem.Text = "Center";
       this.centerStyleMenuItem.Click += new EventHandler(this.HandleCenterStyleMenuItemClick);
-      this.tileStyleMenuItem.Enabled = false;
       this.tileStyleMenuItem.Name = "tileStyleMenuItem";
       this.tileStyleMenuItem.Size = new Size(111, 22);
       this.tileStyleMenuItem.Text = "Tile";
       this.tileStyleMenuItem.Click += new EventHandler(this.HandleTileStyleMenuItemClick);
-      this.stretchStyleMenuItem.Enabled = false;
       this.stretchStyleMenuItem.Name = "stretchStyleMenuItem";
       this.stretchStyleMenuItem.Size = new Size(111, 22);
       this.stretchStyleMenuItem.Text = "Stretch";
       this.stretchStyleMenuItem.Click += new EventHandler(this.HandleStretchStyleMenuItemClick);
-      this.fitStyleMenuItem.Enabled = false;
       this.fitStyleMenuItem.Name = "fitStyleMenuItem";
       this.fitStyleMenuItem.Size = new Size(111, 22);
       this.fitStyleMenuItem.Text = "Fit";
       this.fitStyleMenuItem.Click += new EventHandler(this.HandleFitStyleMenuItemClick);
-      this.fillStyleMenuItem.Enabled = false;
       this.fillStyleMenuItem.Name = "fillStyleMenuItem";
       this.fillStyleMenuItem.Size = new Size(111, 22);
       this.fillStyleMenuItem.Text = "Fill";
       this.fillStyleMenuItem.Click += new EventHandler(this.HandleFillStyleMenuItemClick);
-      this.spanStyleMenuItem.Enabled = false;
       this.spanStyleMenuItem.Name = "spanStyleMenuItem";
       this.spanStyleMenuItem.Size = new Size(111, 22);
       this.spanStyleMenuItem.Text = "Span";
