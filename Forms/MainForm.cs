@@ -14,15 +14,12 @@ namespace Gh.Walliant.Forms
 {
   internal class MainForm : HiddenForm
   {
-    private readonly AboutForm aboutForm = new AboutForm("https://walliant.com/elements/about.html");
-    private readonly LicenseForm licenseForm = new LicenseForm("https://walliant.com/license/index.html");
     private readonly IChanger changer;
     private readonly IFactory factory;
     private bool refreshing;
     private IContainer components;
     private NotifyIcon notifyIcon;
     private ContextMenuStrip mainMenuStrip;
-    private ToolStripMenuItem licenseMenuItem;
     private ToolStripMenuItem refreshMenuItem;
     private ToolStripMenuItem saveMenuItem;
     private Timer refreshTimer;
@@ -44,20 +41,14 @@ namespace Gh.Walliant.Forms
     private ToolStripMenuItem providerSettingsMenuItem;
     private ToolStripMenuItem styleSettingsMenuItem;
     private ToolStripMenuItem settingsToolStripMenuItem;
-    private ToolStripMenuItem aboutMenuItem;
     private ToolStripMenuItem launchSettingsMenuItem;
     private ToolStripMenuItem appMainMenuItem;
-    private ToolStripMenuItem shareMainMenuItem;
 
     public MainForm(IChanger changer, IFactory factory)
     {
       this.changer = changer;
       this.factory = factory;
       this.InitializeComponent();
-      this.aboutForm.Owner = (Form) this;
-      this.aboutForm.Icon = this.Icon;
-      this.licenseForm.Owner = (Form) this;
-      this.licenseForm.Icon = this.Icon;
       this.spanStyleMenuItem.Available = Gh.Walliant.Utilities.Host.Modern;
       this.spotlightProviderMenuItem.Available = Gh.Walliant.Utilities.Host.Supported;
     }
@@ -67,11 +58,8 @@ namespace Gh.Walliant.Forms
       base.OnFormCreated(e);
       try
       {
-        Agent.Instance.Updated += new EventHandler<AgentEventArgs>(this.HandleAgentInstanceUpdated);
-        this.notifyIcon.ShowBalloonTip(1000);
-        bool enabled = Agent.Instance.Enabled;
-        this.UpdateNotifyIcon(enabled);
-        if (!enabled || !Config.Instance.AppEnabled)
+        this.UpdateNotifyIcon(Config.Instance.AppEnabled);
+        if (!Config.Instance.AppEnabled)
           return;
         this.PerformScheduledRefresh();
       }
@@ -86,35 +74,7 @@ namespace Gh.Walliant.Forms
       base.OnFormClosed(e);
       try
       {
-        Agent.Instance.Updated -= new EventHandler<AgentEventArgs>(this.HandleAgentInstanceUpdated);
         Config.Instance.Save();
-      }
-      catch (Exception ex)
-      {
-        Logger.Instance.Error(ex);
-      }
-    }
-
-    private void HandleAgentInstanceUpdated(object sender, AgentEventArgs e)
-    {
-      try
-      {
-        bool enabled = e.Enabled;
-        bool appEnabled = Config.Instance.AppEnabled;
-        this.UpdateNotifyIcon(enabled);
-        this.appMainMenuItem.Checked = enabled & appEnabled;
-        this.appMainMenuItem.Enabled = enabled;
-        this.shareMainMenuItem.Checked = enabled;
-        if (enabled & appEnabled)
-        {
-          this.EnableMenuItems();
-          this.PerformScheduledRefresh();
-        }
-        else
-        {
-          this.DisableMemuItems();
-          this.StopRefreshTimer();
-        }
       }
       catch (Exception ex)
       {
@@ -153,11 +113,9 @@ namespace Gh.Walliant.Forms
 
     private void HandleMainMenuOpening(object sender, CancelEventArgs e)
     {
-      bool flag1 = false;
       bool flag2 = false;
       try
       {
-        flag1 = Agent.Instance.Enabled;
         flag2 = Config.Instance.AppEnabled;
       }
       catch (Exception ex)
@@ -166,10 +124,9 @@ namespace Gh.Walliant.Forms
       }
       finally
       {
-        this.appMainMenuItem.Checked = flag1 & flag2;
-        this.appMainMenuItem.Enabled = flag1;
-        this.shareMainMenuItem.Checked = flag1;
-        if (flag1 & flag2)
+        this.appMainMenuItem.Checked = flag2;
+        this.appMainMenuItem.Enabled = true;
+        if (flag2)
           this.EnableMenuItems();
         else
           this.DisableMemuItems();
@@ -211,7 +168,7 @@ namespace Gh.Walliant.Forms
     {
       try
       {
-        if (!Agent.Instance.Enabled || !Config.Instance.AppEnabled)
+        if (!Config.Instance.AppEnabled)
           return;
         this.refreshWorker.RunWorkerAsync((object) Config.Instance.Service);
         this.DisableMemuItems();
@@ -291,7 +248,7 @@ namespace Gh.Walliant.Forms
 
     private void StartRefreshTimer(TimeSpan interval)
     {
-      if (!Config.Instance.Active || !Agent.Instance.Enabled || !Config.Instance.AppEnabled)
+      if (!Config.Instance.Active || !Config.Instance.AppEnabled)
         return;
       this.refreshTimer.Interval = (int) interval.TotalMilliseconds;
       this.refreshTimer.Start();
@@ -327,7 +284,7 @@ namespace Gh.Walliant.Forms
     {
       try
       {
-        if (!Agent.Instance.Enabled || !Config.Instance.AppEnabled)
+        if (!Config.Instance.AppEnabled)
           return;
         this.EnableMenuItems();
       }
@@ -392,6 +349,7 @@ namespace Gh.Walliant.Forms
         bool flag = !Config.Instance.AppEnabled;
         Config.Instance.AppEnabled = flag;
         this.appMainMenuItem.Checked = flag;
+        this.UpdateNotifyIcon(Config.Instance.AppEnabled);
         if (flag)
         {
           this.EnableMenuItems();
@@ -402,18 +360,6 @@ namespace Gh.Walliant.Forms
           this.DisableMemuItems();
           this.StopRefreshTimer();
         }
-      }
-      catch (Exception ex)
-      {
-        Logger.Instance.Error(ex);
-      }
-    }
-
-    private void HandleShareMainMenuItemClick(object sender, EventArgs e)
-    {
-      try
-      {
-        Agent.Instance.Toggle();
       }
       catch (Exception ex)
       {
@@ -710,32 +656,6 @@ namespace Gh.Walliant.Forms
       }
     }
 
-    private void HandleAboutMenuItemClick(object sender, EventArgs e)
-    {
-      try
-      {
-        this.mainMenuStrip.Close();
-        this.aboutForm.Show();
-      }
-      catch (Exception ex)
-      {
-        Logger.Instance.Error(ex);
-      }
-    }
-
-    private void HandleLicenseMenuItemClick(object sender, EventArgs e)
-    {
-      try
-      {
-        this.mainMenuStrip.Close();
-        this.licenseForm.Show();
-      }
-      catch (Exception ex)
-      {
-        Logger.Instance.Error(ex);
-      }
-    }
-
     private void HandleExitMenuItemClick(object sender, EventArgs e)
     {
       try
@@ -769,7 +689,6 @@ namespace Gh.Walliant.Forms
       this.refreshMenuItem = new ToolStripMenuItem();
       this.saveMenuItem = new ToolStripMenuItem();
       this.appMainMenuItem = new ToolStripMenuItem();
-      this.shareMainMenuItem = new ToolStripMenuItem();
       this.settingsToolStripMenuItem = new ToolStripMenuItem();
       this.settingsMenuStrip = new ContextMenuStrip();
       this.activeSettingsMenuItem = new ToolStripMenuItem();
@@ -786,8 +705,6 @@ namespace Gh.Walliant.Forms
       this.fillStyleMenuItem = new ToolStripMenuItem();
       this.spanStyleMenuItem = new ToolStripMenuItem();
       this.launchSettingsMenuItem = new ToolStripMenuItem();
-      this.licenseMenuItem = new ToolStripMenuItem();
-      this.aboutMenuItem = new ToolStripMenuItem();
       this.exitMenuItem = new ToolStripMenuItem();
       this.refreshTimer = new Timer();
       this.saveFileDialog = new SaveFileDialog();
@@ -797,21 +714,16 @@ namespace Gh.Walliant.Forms
       this.providerMenuStrip.SuspendLayout();
       this.styleMenuStrip.SuspendLayout();
       this.SuspendLayout();
-      this.notifyIcon.BalloonTipText = "Change your wallpaper to the astonishing images daily";
-      this.notifyIcon.BalloonTipTitle = "Wallpaper changer";
       this.notifyIcon.ContextMenuStrip = this.mainMenuStrip;
       this.notifyIcon.Icon = (Icon) componentResourceManager.GetObject("notifyIcon.Icon");
-      this.notifyIcon.Text = "Wallpaper manager";
+      this.notifyIcon.Text = "Walliant!";
       this.notifyIcon.Visible = true;
-      this.mainMenuStrip.Items.AddRange(new ToolStripItem[8]
+      this.mainMenuStrip.Items.AddRange(new ToolStripItem[5]
       {
         (ToolStripItem) this.refreshMenuItem,
         (ToolStripItem) this.saveMenuItem,
         (ToolStripItem) this.appMainMenuItem,
-        (ToolStripItem) this.shareMainMenuItem,
         (ToolStripItem) this.settingsToolStripMenuItem,
-        (ToolStripItem) this.licenseMenuItem,
-        (ToolStripItem) this.aboutMenuItem,
         (ToolStripItem) this.exitMenuItem
       });
       this.mainMenuStrip.Name = "contextMenuStrip1";
@@ -834,10 +746,6 @@ namespace Gh.Walliant.Forms
       this.appMainMenuItem.Size = new Size(186, 22);
       this.appMainMenuItem.Text = "Enable Walliant";
       this.appMainMenuItem.Click += new EventHandler(this.HandleAppMainMenuItemClick);
-      this.shareMainMenuItem.Name = "shareMainMenuItem";
-      this.shareMainMenuItem.Size = new Size(186, 22);
-      this.shareMainMenuItem.Text = "Allow Web indexing";
-      this.shareMainMenuItem.Click += new EventHandler(this.HandleShareMainMenuItemClick);
       this.settingsToolStripMenuItem.DropDown = (ToolStripDropDown) this.settingsMenuStrip;
       this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
       this.settingsToolStripMenuItem.Size = new Size(186, 22);
@@ -943,14 +851,6 @@ namespace Gh.Walliant.Forms
       this.launchSettingsMenuItem.Size = new Size(179, 22);
       this.launchSettingsMenuItem.Text = "Launch on startup";
       this.launchSettingsMenuItem.Click += new EventHandler(this.HandleLaunchSettingsMenuItemClick);
-      this.licenseMenuItem.Name = "licenseMenuItem";
-      this.licenseMenuItem.Size = new Size(186, 22);
-      this.licenseMenuItem.Text = "License";
-      this.licenseMenuItem.Click += new EventHandler(this.HandleLicenseMenuItemClick);
-      this.aboutMenuItem.Name = "aboutMenuItem";
-      this.aboutMenuItem.Size = new Size(186, 22);
-      this.aboutMenuItem.Text = "About";
-      this.aboutMenuItem.Click += new EventHandler(this.HandleAboutMenuItemClick);
       this.exitMenuItem.Name = "exitMenuItem";
       this.exitMenuItem.Size = new Size(186, 22);
       this.exitMenuItem.Text = "Exit";
