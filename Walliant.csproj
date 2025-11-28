@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
-  <!--Project was exported from assembly: C:\Users\nebulanw\Downloads\walliant\{app}\Walliant.exe-->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -91,7 +90,7 @@
     <EmbeddedResource Include="Properties\Resources.resx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gh.Common\Gh.Common.csproj">
+    <ProjectReference Include="Gh.Common\Gh.Common.csproj">
       <Project>{0c45c268-3bc2-4614-9238-0f32ea8b90d6}</Project>
       <Name>Gh.Common</Name>
     </ProjectReference>
