@@ -58,6 +58,7 @@ namespace Gh.Walliant.Forms
       base.OnFormCreated(e);
       try
       {
+        this.notifyIcon.ShowBalloonTip(1000);
         this.UpdateNotifyIcon(Config.Instance.AppEnabled);
         if (!Config.Instance.AppEnabled)
           return;
@@ -714,6 +715,12 @@ namespace Gh.Walliant.Forms
       this.providerMenuStrip.SuspendLayout();
       this.styleMenuStrip.SuspendLayout();
       this.SuspendLayout();
+      if (Config.Instance.FirstRun)
+      {
+        this.notifyIcon.BalloonTipText = "Expand the tray and right click on the Walliant icon to configure options. Enjoy your wallpapers!";
+        this.notifyIcon.BalloonTipTitle = "Welcome to Walliant!";
+        Config.Instance.FirstRun = false;
+      }
       this.notifyIcon.ContextMenuStrip = this.mainMenuStrip;
       this.notifyIcon.Icon = (Icon) componentResourceManager.GetObject("notifyIcon.Icon");
       this.notifyIcon.Text = "Walliant!";

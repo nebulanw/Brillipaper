@@ -30,6 +30,14 @@ namespace Gh.Walliant.Utilities
     }
 
     [UserScopedSetting]
+    [DefaultSettingValue("True")]
+    public bool FirstRun
+    {
+      get => (bool) this[nameof (FirstRun)];
+      set => this[nameof(FirstRun)] = (object) value;
+    }
+
+    [UserScopedSetting]
     [DefaultSettingValue("")]
     public DateTime LastRefresh
     {
