@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Globalization;
 using System.Net;
 
-namespace Gh.Walliant.Wallpaper.Impl.Services.Spotlight
+namespace Gh.Brillipaper.Wallpaper.Impl.Services.Spotlight
 {
   internal class Service : Base
   {

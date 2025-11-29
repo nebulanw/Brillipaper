@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Gh.Walliant.Wallpaper.Impl.Changers.Legacy
+namespace Gh.Brillipaper.Wallpaper.Impl.Changers.Legacy
 {
   internal class Changer : IChanger
   {

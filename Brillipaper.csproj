@@ -5,9 +5,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3F8443C8-AB1F-4D15-88AC-A98F41450885}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AssemblyName>Walliant</AssemblyName>
+    <AssemblyName>Brillipaper</AssemblyName>
     <ApplicationVersion>1.0.16.0</ApplicationVersion>
-    <RootNamespace>Gh.Walliant</RootNamespace>
+    <RootNamespace>Gh.Brillipaper</RootNamespace>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -90,13 +90,13 @@
     <EmbeddedResource Include="Properties\Resources.resx" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="Gh.Common\Gh.Common.csproj">
       <Project>{0c45c268-3bc2-4614-9238-0f32ea8b90d6}</Project>
       <Name>Gh.Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

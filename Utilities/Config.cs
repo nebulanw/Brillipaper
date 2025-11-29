@@ -1,9 +1,9 @@
 ﻿using Gh.Common.Utilities;
-using Gh.Walliant.Wallpaper;
+using Gh.Brillipaper.Wallpaper;
 using System;
 using System.Configuration;
 
-namespace Gh.Walliant.Utilities
+namespace Gh.Brillipaper.Utilities
 {
   internal sealed class Config : ConfigBase
   {

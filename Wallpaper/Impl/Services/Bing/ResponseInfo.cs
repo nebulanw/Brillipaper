@@ -1,4 +1,4 @@
-﻿namespace Gh.Walliant.Wallpaper.Impl.Services.Bing
+﻿namespace Gh.Brillipaper.Wallpaper.Impl.Services.Bing
 {
   internal class ResponseInfo
   {

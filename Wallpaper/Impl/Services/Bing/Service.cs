@@ -3,7 +3,7 @@ using System;
 using System.Collections.Specialized;
 using System.Net;
 
-namespace Gh.Walliant.Wallpaper.Impl.Services.Bing
+namespace Gh.Brillipaper.Wallpaper.Impl.Services.Bing
 {
   internal class Service : Base
   {

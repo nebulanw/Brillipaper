@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Gh.Walliant.Wallpaper
+namespace Gh.Brillipaper.Wallpaper
 {
   internal class ImageData
   {

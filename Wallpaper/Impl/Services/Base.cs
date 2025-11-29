@@ -2,7 +2,7 @@
 using System.IO;
 using System.Net;
 
-namespace Gh.Walliant.Wallpaper.Impl.Services
+namespace Gh.Brillipaper.Wallpaper.Impl.Services
 {
   internal abstract class Base : IService
   {

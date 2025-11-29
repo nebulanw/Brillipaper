@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gh.Walliant.Wallpaper.Impl.Changers.Legacy
+namespace Gh.Brillipaper.Wallpaper.Impl.Changers.Legacy
 {
   [Flags]
   internal enum ApplyFlag

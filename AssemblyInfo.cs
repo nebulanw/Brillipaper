@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Walliant")]
+[assembly: AssemblyTitle("Brillipaper")]
 [assembly: AssemblyDescription("A simple wallpaper app.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("nebulanw")]
-[assembly: AssemblyProduct("Walliant")]
+[assembly: AssemblyProduct("Brillipaper")]
 [assembly: AssemblyCopyright("(c) 2025 nebulanw")]
 [assembly: AssemblyTrademark("")]
 [assembly: ComVisible(false)]

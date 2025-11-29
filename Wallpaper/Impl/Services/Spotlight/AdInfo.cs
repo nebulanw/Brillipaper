@@ -1,4 +1,4 @@
-﻿namespace Gh.Walliant.Wallpaper.Impl.Services.Spotlight
+﻿namespace Gh.Brillipaper.Wallpaper.Impl.Services.Spotlight
 {
   internal class AdInfo
   {

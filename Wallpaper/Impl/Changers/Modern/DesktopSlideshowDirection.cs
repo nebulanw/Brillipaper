@@ -1,4 +1,4 @@
-﻿namespace Gh.Walliant.Wallpaper.Impl.Changers.Modern
+﻿namespace Gh.Brillipaper.Wallpaper.Impl.Changers.Modern
 {
   internal enum DesktopSlideshowDirection
   {

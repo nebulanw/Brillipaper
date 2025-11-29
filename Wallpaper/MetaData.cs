@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gh.Walliant.Wallpaper
+namespace Gh.Brillipaper.Wallpaper
 {
   internal class MetaData
   {

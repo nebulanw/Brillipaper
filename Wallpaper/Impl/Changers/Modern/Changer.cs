@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.IO;
 
-namespace Gh.Walliant.Wallpaper.Impl.Changers.Modern
+namespace Gh.Brillipaper.Wallpaper.Impl.Changers.Modern
 {
   internal class Changer : IChanger
   {

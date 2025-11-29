@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gh.Walliant.Utilities
+namespace Gh.Brillipaper.Utilities
 {
   internal static class Host
   {

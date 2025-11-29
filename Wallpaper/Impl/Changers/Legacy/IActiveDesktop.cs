@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Gh.Walliant.Wallpaper.Impl.Changers.Legacy
+namespace Gh.Brillipaper.Wallpaper.Impl.Changers.Legacy
 {
   [Guid("F490EB00-1240-11D1-9888-006097DEACF9")]
   [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]

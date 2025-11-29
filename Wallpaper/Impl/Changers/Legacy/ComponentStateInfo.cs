@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Gh.Walliant.Wallpaper.Impl.Changers.Legacy
+namespace Gh.Brillipaper.Wallpaper.Impl.Changers.Legacy
 {
   internal struct ComponentStateInfo
   {

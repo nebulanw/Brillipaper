@@ -1,4 +1,4 @@
-﻿namespace Gh.Walliant.Wallpaper
+﻿namespace Gh.Brillipaper.Wallpaper
 {
   internal interface IFactory
   {

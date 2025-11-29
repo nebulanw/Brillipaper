@@ -1,8 +1,8 @@
 ﻿using Gh.Common.Forms;
 using Gh.Common.Utilities;
-using Gh.Walliant.Properties;
-using Gh.Walliant.Utilities;
-using Gh.Walliant.Wallpaper;
+using Gh.Brillipaper.Properties;
+using Gh.Brillipaper.Utilities;
+using Gh.Brillipaper.Wallpaper;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -10,7 +10,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Gh.Walliant.Forms
+namespace Gh.Brillipaper.Forms
 {
   internal class MainForm : HiddenForm
   {
@@ -49,8 +49,8 @@ namespace Gh.Walliant.Forms
       this.changer = changer;
       this.factory = factory;
       this.InitializeComponent();
-      this.spanStyleMenuItem.Available = Gh.Walliant.Utilities.Host.Modern;
-      this.spotlightProviderMenuItem.Available = Gh.Walliant.Utilities.Host.Supported;
+      this.spanStyleMenuItem.Available = Gh.Brillipaper.Utilities.Host.Modern;
+      this.spotlightProviderMenuItem.Available = Gh.Brillipaper.Utilities.Host.Supported;
     }
 
     protected override void OnFormCreated(EventArgs e)
@@ -717,13 +717,13 @@ namespace Gh.Walliant.Forms
       this.SuspendLayout();
       if (Config.Instance.FirstRun)
       {
-        this.notifyIcon.BalloonTipText = "Expand the tray and right click on the Walliant icon to configure options. Enjoy your wallpapers!";
-        this.notifyIcon.BalloonTipTitle = "Welcome to Walliant!";
+        this.notifyIcon.BalloonTipText = "Expand the tray and right click on the Brillipaper icon to configure options. Enjoy your wallpapers!";
+        this.notifyIcon.BalloonTipTitle = "Welcome to Brillipaper!";
         Config.Instance.FirstRun = false;
       }
       this.notifyIcon.ContextMenuStrip = this.mainMenuStrip;
       this.notifyIcon.Icon = (Icon) componentResourceManager.GetObject("notifyIcon.Icon");
-      this.notifyIcon.Text = "Walliant!";
+      this.notifyIcon.Text = "Brillipaper!";
       this.notifyIcon.Visible = true;
       this.mainMenuStrip.Items.AddRange(new ToolStripItem[5]
       {
@@ -751,7 +751,7 @@ namespace Gh.Walliant.Forms
       this.saveMenuItem.Click += new EventHandler(this.HandleSaveMenuItemClick);
       this.appMainMenuItem.Name = "appMainMenuItem";
       this.appMainMenuItem.Size = new Size(186, 22);
-      this.appMainMenuItem.Text = "Enable Walliant";
+      this.appMainMenuItem.Text = "Enable Brillipaper";
       this.appMainMenuItem.Click += new EventHandler(this.HandleAppMainMenuItemClick);
       this.settingsToolStripMenuItem.DropDown = (ToolStripDropDown) this.settingsMenuStrip;
       this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
@@ -865,7 +865,7 @@ namespace Gh.Walliant.Forms
       this.ClientSize = new Size(800, 450);
       this.Icon = (Icon) componentResourceManager.GetObject("$this.Icon");
       this.Name = nameof (MainForm);
-      this.Text = "Walliant";
+      this.Text = "Brillipaper";
       this.mainMenuStrip.ResumeLayout(false);
       this.settingsMenuStrip.ResumeLayout(false);
       this.providerMenuStrip.ResumeLayout(false);
